@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood_Doanation_form</title>
+    <style>
+        body{
+            background: linear-gradient(90deg,Swhite, aqua);
+            font-size: 18px;
+            font-family: sans-serif;
+        }
+        #field{
+            width: 60%;
+            height: fit-content;
+            border: 2px solid black;
+            background: linear-gradient(90deg,white,rgb(12, 154, 154));
+        }
+        h1{
+            margin-top: 0;
+        }
+        input{
+            width: 98%;
+        }
+        textarea{
+            width: 98.25%;
+            height: 50px;
+        }
+        select{
+            width: 98.25%;
+        }
+        span{
+            color: red;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="conntainer">
+        <form onsubmit="return validation()">
+            <fieldset id="field">
+                <label><h1>User Record List</h1></label>
+                <label>Username</label>
+                <br/>
+                <label>
+                    <input type="text" id="username"/>
+                    <span id="usererror"></span>
+                </label>
+                <br/>
+                <label>Email address</label>
+                <br/>
+                <label>
+                    <input type="text" id="email"/>
+                    <span id="emailerror"></span>
+                </label>
+                <br/>
+                <label required="required">Select your blood group</label>
+                <br/>
+                <label>
+                    <select>
+                        <option>A+</option>
+                        <option>B+</option>
+                        <option>AB+</option>
+                        <option>O+</option>
+                        <option>A-</option>
+                        <option>B-</option>
+                        <option>AB-</option>
+                        <option>O-</option>
+                    </select>
+                </label>
+                <br/>
+                <label>Enter your address</label>
+                <br/>
+                <label>
+                    <textarea col="50" row="3" id="address"></textarea>
+                    <span id="addresserror"></span>
+                </label>
+                 <br/>
+                <label>Enter your phone number</label>
+                <br/>
+                <label><input type="text" id="phone"/></label>
+                <br/>
+                <span id="phoneerror"></span>
+                <label>Any other details regarding your medical health</label>
+                <br/>
+                <label><textarea col="50" row="8"></textarea></label>
+                <br/>
+                <input type="Submit"/>
+            </fieldset>
+        </form>
+    </div>
+    <script>
+        function validation(){
+            var username=document.getElementById("username").value;
+            var email=document.getElementById("email").value;
+            var address=document.getElementById("address").value;
+            var phone=document.getElementById("phone").value;
+
+            var usercheck=/^[A-Za-z. ]{3,20}$/;
+            var emailcheck=/^[A-Za-z_]{3,}@[A-Za-z]{3,}[[.]{1}[A-Za-z.]{2,6}$/;
+            var phonecheck=/^[789]{1}[0-9]{9}$/;
+            var addresscheck=/^[A-Za-z./ 0-9]{10,40}$/;
+
+            if(usercheck.test(username)){
+                document.getElementById("usererror").innerHTML=" ";
+            }
+            else{
+                document.getElementById("usererror").innerHTML="**Username is Invalid**";
+                return false;
+            }
+            
+            if(emailcheck.test(email)){
+                document.getElementById("emailerror").innerHTML=" ";
+            }
+            else{
+                document.getElementById("emailerror").innerHTML="**Email is Invalid**";
+                return false;
+            }
+            
+            if(addresscheck.test(address)){
+                document.getElementById("addresserror").innerHTML=" ";
+            }
+            else{
+                document.getElementById("addresserror").innerHTML="**Address is Invalid**";
+                return false;
+            }
+            
+            if(phonecheck.test(phone)){
+                document.getElementById("phoneerror").innerHTML=" ";
+            }
+            else{
+                document.getElementById("phoneerror").innerHTML="**Phone number is Invalid**";
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
